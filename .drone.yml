@@ -1,0 +1,24 @@
+build:
+  frontend:
+    image: birkhofflee/coffeeforever:node-0.10
+    commands:
+      - npm install
+      - cp -r src/ lib/
+      - cd lib
+      - coffee --compile .
+      - find . -name \*.coffee -delete
+      - npm test
+notify:
+  email:
+    from: drone@birkhoff.me
+    host: smtp.gmail.com
+    username: $$GMAIL_USERNAME
+    password: $$GMAIL_PASSWORD
+    recipients:
+      - admin@birkhoff.me
+    subject: >
+      [{{ build.status }}]
+      {{ repo.owner }}/{{ repo.name }}
+      ({{ build.branch }} - {{ truncate build.commit 8 }})
+    template: >
+      https://git.io/vgvPz
