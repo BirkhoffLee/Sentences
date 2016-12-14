@@ -1,0 +1,25 @@
+{
+  "name": "Sentences",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.coffee",
+  "scripts": {
+    "test": "mocha ./test/express.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BirkhoffLee/Sentences.git"
+  },
+  "author": "Birkhoff Lee <admin@birkhoff.me>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-beta6"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.12.1",
+    "mocha": "^3.2.0",
+    "supertest": "^2.0.1"
+  }
+}

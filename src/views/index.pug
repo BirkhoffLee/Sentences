@@ -1,0 +1,44 @@
+doctype html
+html(data-ts-native)
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Sentences
+    link(rel='stylesheet', href='//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+    script(src="https://unpkg.com/vue/dist/vue.js")
+  body
+    #sentence.ts.text.container
+      | {{ sentence }}
+  style.
+    body, html, #sentence {
+        height: 100%;
+    }
+
+    #sentence {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  script.
+    var self = this;
+    var app = new Vue({
+      el: '#sentence',
+      data: {
+        sentence: ""
+      },
+      ready: function () {
+        $.ajax({
+            url: "https://raw.githubusercontent.com/BirkhoffLee/Sentences/sentences/sentence",
+            method: 'GET',
+            success: function (data) {
+                self.sentence = data;
+            },
+            error: function (error) {
+                alert(JSON.stringify(error));
+                self.sentence = "Error loading today's sentence";
+            }
+        });
+      }
+    });
