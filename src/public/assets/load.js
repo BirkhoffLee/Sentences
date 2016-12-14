@@ -1,7 +1,7 @@
 var app;
 
 $.ajax({
-    url: "https://raw.githubusercontent.com/BirkhoffLee/Sentences/sentences/sentence",
+    url: "sentence",
     method: 'GET',
     success: function (todaySentence) {
         app = new Vue({
