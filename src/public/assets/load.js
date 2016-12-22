@@ -1,18 +1,14 @@
-var app;
+var updateSentence = function (sentence) {
+  return $("#sentence").html(sentence);
+}
 
 $.ajax({
     url: "sentence",
     method: 'GET',
     success: function (todaySentence) {
-        app = new Vue({
-          el: '#sentence',
-          data: {
-            sentence: todaySentence
-          }
-        });
+        updateSentence(todaySentence);
     },
     error: function (error) {
-        alert(JSON.stringify(error));
-        self.sentence = "Error loading today's sentence.";
+        updateSentence("Error loading today's sentence: " + JSON.stringify(error));
     }
 });
